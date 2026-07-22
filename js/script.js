@@ -175,6 +175,19 @@ function repoSlug(url) {
   return url.split("/").pop();
 }
 
+// Real brand colors for each tech tag — the little dot next to each tag/chip site-wide
+const TECH_COLORS = {
+  Python: "#3776AB",
+  JavaScript: "#F7DF1E",
+  Java: "#ED8B00",
+  "C++": "#00599C",
+  HTML: "#E34F26",
+  ML: "#8B5CF6"
+};
+function techColor(tag) {
+  return TECH_COLORS[tag] || "#48A89A";
+}
+
 function getFilteredSortedProjects() {
   const q = viewState.search.trim().toLowerCase();
   let list = projects.filter((p) => {
@@ -217,7 +230,7 @@ function renderProjects() {
       <h3>${p.name}</h3>
       <span class="project-date">${p.date}</span>
       <p>${p.desc}</p>
-      <div class="tech-row">${p.tags.map((t) => `<span>${t}</span>`).join(" · ")}</div>
+      <div class="tech-row">${p.tags.map((t) => `<span><i class="tech-dot" style="background:${techColor(t)};color:${techColor(t)}"></i>${t}</span>`).join("")}</div>
       <div class="stat-row loading" data-stat-for="${repoSlug(p.url)}">
         <span class="stat-stars"><span class="stat-icon">${starIconSVG()}</span><span class="stat-skel"></span></span>
         <span class="stat-updated"><span class="stat-skel"></span></span>
