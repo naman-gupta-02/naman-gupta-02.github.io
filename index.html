@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Naman Gupta — Software Engineer & ML Enthusiast</title>
+<meta name="description" content="Portfolio of Naman Gupta — MSCS student at USC, Technology Analyst at Morgan Stanley, and builder of ML & full-stack projects." />
+
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Naman Gupta — Software Engineer & ML Enthusiast" />
+<meta property="og:description" content="MSCS student at USC, Technology Analyst at Morgan Stanley, and builder of ML & full-stack projects." />
+<meta property="og:image" content="assets/profile.jpg" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Naman Gupta — Software Engineer & ML Enthusiast" />
+<meta name="twitter:description" content="MSCS student at USC, Technology Analyst at Morgan Stanley, and builder of ML & full-stack projects." />
+<meta name="twitter:image" content="assets/profile.jpg" />
+
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚀</text></svg>" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="css/style.css" />
+<script>
+  (function () {
+    var saved = localStorage.getItem("theme");
+    var theme = saved || (window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark");
+    document.documentElement.setAttribute("data-theme", theme);
+  })();
+</script>
+</head>
+<body>
+
+<div class="progress-bar" id="progressBar"></div>
+
+<header class="navbar" id="navbar">
+  <div class="container nav-inner">
+    <a href="#home" class="logo">NG<span class="dot">.</span></a>
+    <nav class="nav-links" id="navLinks">
+      <a href="#home" class="nav-link active">Home</a>
+      <a href="#about" class="nav-link">About</a>
+      <a href="#experience" class="nav-link">Experience</a>
+      <a href="#projects" class="nav-link">Projects</a>
+      <a href="#skills" class="nav-link">Skills</a>
+      <a href="#achievements" class="nav-link">Achievements</a>
+      <a href="#contact" class="nav-link">Contact</a>
+    </nav>
+    <div class="nav-actions">
+      <button id="themeToggle" class="icon-btn" aria-label="Toggle theme" title="Toggle theme">
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section id="home" class="hero">
+    <div class="container hero-inner">
+      <div class="hero-text reveal">
+        <p class="eyebrow">Hi, my name is</p>
+        <h1>Naman Gupta</h1>
+        <h2 class="typing-line">I build <span id="typed" class="typed"></span><span class="cursor">|</span></h2>
+        <p class="hero-desc">
+          MS in Computer Science candidate at the <strong>University of Southern California</strong>,
+          with hands-on experience as a Technology Analyst at <strong>Morgan Stanley</strong>, and a
+          builder of machine-learning, full-stack, and systems projects — from Bi-LSTM URL classifiers
+          to full MERN marketplaces.
+        </p>
+        <div class="hero-cta">
+          <a href="assets/Naman_Gupta_Resume.pdf" class="btn btn-primary" download>Download Résumé</a>
+          <a href="#projects" class="btn btn-ghost">View Projects</a>
+        </div>
+        <div class="hero-socials">
+          <a href="https://github.com/naman-gupta-02" target="_blank" rel="noopener" aria-label="GitHub" title="GitHub">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.73.5.5 5.73.5 12a11.5 11.5 0 0 0 7.86 10.94c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.54-3.88-1.54-.53-1.34-1.29-1.7-1.29-1.7-1.05-.72.08-.71.08-.71 1.17.08 1.78 1.2 1.78 1.2 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.47.11-3.06 0 0 .97-.31 3.18 1.18a10.9 10.9 0 0 1 5.79 0c2.2-1.49 3.17-1.18 3.17-1.18.64 1.59.24 2.77.12 3.06.74.81 1.18 1.83 1.18 3.09 0 4.41-2.69 5.38-5.25 5.67.41.36.78 1.08.78 2.17v3.22c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12C23.5 5.73 18.27.5 12 .5z"/></svg>
+          </a>
+          <a href="https://linkedin.com/in/-namangupta" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.15 1.45-2.15 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
+          </a>
+          <a href="https://leetcode.com/namanguptaprogrammer" target="_blank" rel="noopener" aria-label="LeetCode" title="LeetCode">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 2.5 6.3 9.8a2.7 2.7 0 0 0 0 3.8l5 5a2.7 2.7 0 0 0 3.8 0l2.2-2.2a1.4 1.4 0 0 0-2-2l-2.1 2.1a.9.9 0 0 1-1.3 0l-4.2-4.2a.9.9 0 0 1 0-1.3l4.2-4.2a.9.9 0 0 1 1.3 0l2.1 2.1a1.4 1.4 0 0 0 2-2l-2.2-2.2a2.7 2.7 0 0 0-1.7-.8zM9 15.5h9.6a1.4 1.4 0 1 1 0 2.8H9a1.4 1.4 0 1 1 0-2.8z"/></svg>
+          </a>
+          <a href="mailto:ngupta73@usc.edu" aria-label="Email" title="Email">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z" opacity="0"/><path d="M4 6h16v12H4z"/><path d="m4 7 8 6 8-6"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="hero-photo reveal">
+        <div class="photo-frame">
+          <img src="assets/profile.jpg" alt="Naman Gupta" id="profileImg"
+               onerror="this.style.display='none'; document.getElementById('avatarFallback').style.display='flex';" />
+          <div class="avatar-fallback" id="avatarFallback">NG</div>
+        </div>
+      </div>
+    </div>
+    <a href="#about" class="scroll-cue" aria-label="Scroll down"><span></span></a>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="section">
+    <div class="container">
+      <h2 class="section-title reveal"><span class="num">01.</span> About Me</h2>
+      <div class="about-grid">
+        <div class="about-text reveal">
+          <p>
+            I'm a Computer Science graduate student at USC (starting Jan 2026), and previously a
+            <strong>Technology Analyst</strong> and <strong>Technology Apprentice</strong> at
+            <strong>Morgan Stanley</strong> in Mumbai, where I built internal monitoring tools and
+            data-driven recommendation models that shipped measurable improvements — a 20% cut in
+            task completion time and a 25% lift in resource-allocation accuracy.
+          </p>
+          <p>
+            Outside of work I publish research (an IEEE paper on Bi-LSTM malicious URL detection,
+            99.25% precision) and ship side projects across ML, computer vision, and full-stack
+            web — from a real-time sign-language translator to an AI-powered job search platform.
+            I graduated as <strong>Valedictorian and Gold Medalist</strong> of my B.Tech CSE batch
+            at Graphic Era University.
+          </p>
+          <p>Here are a few technologies I work with:</p>
+          <ul class="about-list">
+            <li>Python &amp; C++</li>
+            <li>JavaScript / ReactJS / Node.js</li>
+            <li>TensorFlow &amp; Keras</li>
+            <li>Flask &amp; Django</li>
+            <li>SQL &amp; Pandas</li>
+            <li>Git &amp; VS Code</li>
+          </ul>
+        </div>
+        <div class="about-facts reveal">
+          <div class="fact-card">
+            <h3>Education</h3>
+            <p><strong>University of Southern California</strong><br/>MS in Computer Science<br/><span class="muted">Jan 2026 – Dec 2027 · Los Angeles, USA</span></p>
+            <p><strong>Graphic Era Deemed to be University</strong><br/>B.Tech, Computer Science &amp; Engineering<br/><span class="muted">Sep 2021 – June 2025 · Dehradun, India</span></p>
+          </div>
+          <div class="fact-card">
+            <h3>Quick Facts</h3>
+            <ul class="facts">
+              <li>📍 Los Angeles, CA</li>
+              <li>🎓 Valedictorian &amp; Gold Medalist, Class of 2025</li>
+              <li>📄 IEEE Published Author</li>
+              <li>💼 Ex-Morgan Stanley, Mumbai</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience" class="section alt">
+    <div class="container">
+      <h2 class="section-title reveal"><span class="num">02.</span> Experience</h2>
+      <div class="timeline">
+
+        <div class="timeline-item reveal">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content company-card">
+            <div class="timeline-head">
+              <h3>Morgan Stanley</h3>
+              <span class="timeline-date">July 2024 – Nov 2025 · Mumbai, India</span>
+            </div>
+            <div class="role-block">
+              <div class="role-head">
+                <h4>Technology Analyst</h4>
+                <span class="role-date">Aug 2025 – Nov 2025</span>
+              </div>
+              <ul>
+                <li>Diagnosed recurring performance bottlenecks across critical internal applications shared by multiple teams, then implemented targeted backend optimizations that measurably improved speed, stability, and day-to-day reliability.</li>
+                <li>Partnered with engineering and operations stakeholders to design and build internal tools and reusable UI components for monitoring dashboards, improving operational visibility and cutting manual overhead across teams.</li>
+              </ul>
+            </div>
+            <div class="role-block">
+              <div class="role-head">
+                <h4>Technology Apprentice</h4>
+                <span class="role-date">July 2024 – Aug 2025</span>
+              </div>
+              <ul>
+                <li>Identified inefficiencies in manual, ad-hoc loan routing decisions and designed a data-driven recommendation model that surfaces the top 3 best-fit employees per department, cutting average task completion time by <strong>20%</strong>.</li>
+                <li>Built and deployed predictive workload distribution models trained on historical throughput and staffing data, raising balanced resource allocation accuracy across teams by <strong>25%</strong> while reducing individual employee overload.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item reveal">
+          <div class="timeline-dot research"></div>
+          <div class="timeline-content">
+            <div class="timeline-head">
+              <h3>Research: Deep Learning for Malicious URL Detection <span class="tag-pill">IEEE Paper</span></h3>
+              <span class="timeline-date">Feb 2025</span>
+            </div>
+            <ul>
+              <li>Trained and benchmarked four deep learning architectures (CNN, RNN, LSTM, Bi-LSTM) on a large IEEE-published URL dataset, achieving a top precision of <strong>99.25%</strong> with the Bi-LSTM model.</li>
+              <li>Conducted a comparative architecture analysis for sequential pattern recognition, showing bidirectional context significantly boosts classification accuracy and generalization.</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects" class="section">
+    <div class="container">
+      <h2 class="section-title reveal"><span class="num">03.</span> Projects</h2>
+      <p class="section-sub reveal">All <span id="projectCount">17</span> public repositories from my <a href="https://github.com/naman-gupta-02" target="_blank" rel="noopener">GitHub</a>, newest first. Filter by technology below.</p>
+
+      <div class="filter-bar reveal" id="filterBar">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="Python">Python</button>
+        <button class="filter-btn" data-filter="JavaScript">JavaScript</button>
+        <button class="filter-btn" data-filter="Java">Java</button>
+        <button class="filter-btn" data-filter="C++">C++</button>
+        <button class="filter-btn" data-filter="HTML">HTML</button>
+        <button class="filter-btn" data-filter="ML">Machine Learning</button>
+      </div>
+
+      <div class="project-grid" id="projectGrid"><!-- injected by js/script.js --></div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills" class="section alt">
+    <div class="container">
+      <h2 class="section-title reveal"><span class="num">04.</span> Skills</h2>
+      <div class="skills-grid">
+        <div class="skill-card reveal">
+          <h3>Languages</h3>
+          <div class="chip-row">
+            <span class="chip">C</span><span class="chip">C++</span><span class="chip">Java</span>
+            <span class="chip">JavaScript</span><span class="chip">Python</span><span class="chip">HTML</span><span class="chip">SQL</span>
+          </div>
+        </div>
+        <div class="skill-card reveal">
+          <h3>Frameworks &amp; Libraries</h3>
+          <div class="chip-row">
+            <span class="chip">Node.js</span><span class="chip">ReactJS</span><span class="chip">Flask</span>
+            <span class="chip">Django</span><span class="chip">TensorFlow</span><span class="chip">Keras</span><span class="chip">Pandas</span>
+          </div>
+        </div>
+        <div class="skill-card reveal">
+          <h3>Developer Tools</h3>
+          <div class="chip-row">
+            <span class="chip">VS Code</span><span class="chip">Git</span><span class="chip">Microsoft 365</span>
+            <span class="chip">PyCharm</span><span class="chip">Jupyter Notebook</span>
+          </div>
+        </div>
+        <div class="skill-card reveal">
+          <h3>Soft Skills</h3>
+          <div class="chip-row">
+            <span class="chip">Interpersonal</span><span class="chip">Teamwork</span><span class="chip">Leadership</span>
+            <span class="chip">Problem-Solving</span><span class="chip">Time Management</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ACHIEVEMENTS -->
+  <section id="achievements" class="section">
+    <div class="container">
+      <h2 class="section-title reveal"><span class="num">05.</span> Achievements &amp; Beyond the Code</h2>
+      <div class="cards-grid">
+        <div class="info-card reveal">
+          <div class="info-card-icon">🏅</div>
+          <h3>Valedictorian &amp; Gold Medalist</h3>
+          <p>Graphic Era Deemed to be University — recognized for the highest academic and overall performance in the B.Tech CSE batch of 2025.</p>
+        </div>
+        <div class="info-card reveal">
+          <div class="info-card-icon">🏆</div>
+          <h3>Winner, Crack-C 2.0</h3>
+          <p>Inter-college coding and quiz competition hosted at Graphic Era, competing against participants from universities across Uttarakhand.</p>
+        </div>
+        <div class="info-card reveal">
+          <div class="info-card-icon">🎤</div>
+          <h3>Marketing &amp; Outreach Coordinator, TEDx</h3>
+          <p>TEDxGraphicEraUniversity — coordinated with guest speakers, managed backstage operations, and led outreach for the event.</p>
+        </div>
+        <div class="info-card reveal">
+          <div class="info-card-icon">🎪</div>
+          <h3>Organizing Committee, GraFest</h3>
+          <p>Graphic Era's annual cultural fest drawing 4,000–5,000 participants — led logistics coordination across multiple stages.</p>
+        </div>
+        <div class="info-card reveal">
+          <div class="info-card-icon">📈</div>
+          <h3>Finance &amp; Investment Cell</h3>
+          <p>Event Manager &amp; Student Advisor, coordinating a 15+ member team running webinars on markets and investment strategy for 2+ years.</p>
+        </div>
+        <div class="info-card reveal">
+          <div class="info-card-icon">🙋</div>
+          <h3>Community Volunteer</h3>
+          <p>Regular volunteer and participant across Swarigini, Debathon 2.0, Ultimate Coding Challenge, and inter-college hackathons.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="section contact-section">
+    <div class="container">
+      <h2 class="section-title center reveal"><span class="num">06.</span> Get In Touch</h2>
+      <p class="section-sub center reveal">
+        I'm always open to discussing new opportunities, research collaborations, or interesting
+        engineering problems. My inbox is open — say hello!
+      </p>
+      <div class="contact-links reveal">
+        <a href="mailto:ngupta73@usc.edu" class="btn btn-primary">ngupta73@usc.edu</a>
+        <a href="tel:+12133439773" class="btn btn-ghost">+1 (213) 343-9773</a>
+      </div>
+      <div class="hero-socials center reveal">
+        <a href="https://github.com/naman-gupta-02" target="_blank" rel="noopener" aria-label="GitHub">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.73.5.5 5.73.5 12a11.5 11.5 0 0 0 7.86 10.94c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.54-3.88-1.54-.53-1.34-1.29-1.7-1.29-1.7-1.05-.72.08-.71.08-.71 1.17.08 1.78 1.2 1.78 1.2 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.47.11-3.06 0 0 .97-.31 3.18 1.18a10.9 10.9 0 0 1 5.79 0c2.2-1.49 3.17-1.18 3.17-1.18.64 1.59.24 2.77.12 3.06.74.81 1.18 1.83 1.18 3.09 0 4.41-2.69 5.38-5.25 5.67.41.36.78 1.08.78 2.17v3.22c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12C23.5 5.73 18.27.5 12 .5z"/></svg>
+        </a>
+        <a href="https://linkedin.com/in/-namangupta" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.15 1.45-2.15 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
+        </a>
+        <a href="https://leetcode.com/namanguptaprogrammer" target="_blank" rel="noopener" aria-label="LeetCode">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 2.5 6.3 9.8a2.7 2.7 0 0 0 0 3.8l5 5a2.7 2.7 0 0 0 3.8 0l2.2-2.2a1.4 1.4 0 0 0-2-2l-2.1 2.1a.9.9 0 0 1-1.3 0l-4.2-4.2a.9.9 0 0 1 0-1.3l4.2-4.2a.9.9 0 0 1 1.3 0l2.1 2.1a1.4 1.4 0 0 0 2-2l-2.2-2.2a2.7 2.7 0 0 0-1.7-.8zM9 15.5h9.6a1.4 1.4 0 1 1 0 2.8H9a1.4 1.4 0 1 1 0-2.8z"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <p>Designed &amp; built by Naman Gupta · <span id="year"></span></p>
+  </div>
+</footer>
+
+<button id="backToTop" class="back-to-top" aria-label="Back to top">↑</button>
+
+<script src="js/script.js"></script>
+</body>
+</html>
