@@ -492,3 +492,80 @@ revealEls.forEach((el) => observer.observe(el));
 
 // ---------- Footer year ----------
 document.getElementById("year").textContent = new Date().getFullYear();
+
+// ---------- Magnetic buttons ----------
+document.querySelectorAll(".btn").forEach((btn) => {
+  const strength = 0.4;
+  btn.addEventListener("pointermove", (e) => {
+    if (e.pointerType === "touch") return;
+    const rect = btn.getBoundingClientRect();
+    const x = e.clientX - (rect.left + rect.width / 2);
+    const y = e.clientY - (rect.top + rect.height / 2);
+    btn.style.transition = "transform 0.08s linear";
+    btn.style.transform = `translate(${x * strength}px, ${y * strength - 3}px)`;
+  });
+  btn.addEventListener("pointerleave", () => {
+    btn.style.transition = "transform 0.5s cubic-bezier(.34,1.56,.64,1)";
+    btn.style.transform = "";
+  });
+});
+
+// ---------- Animated favicon: a tiny orbiting "NG." monogram ----------
+(function animateFavicon() {
+  const link = document.getElementById("favicon");
+  if (!link || !window.matchMedia) return;
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  const size = 64;
+  const canvas = document.createElement("canvas");
+  canvas.width = size;
+  canvas.height = size;
+  const ctx = canvas.getContext("2d");
+  const start = performance.now();
+
+  function draw(now) {
+    const t = reduceMotion ? 0 : (now - start) / 1000;
+    ctx.clearRect(0, 0, size, size);
+
+    ctx.beginPath();
+    ctx.arc(size / 2, size / 2, size / 2 - 2, 0, Math.PI * 2);
+    ctx.fillStyle = "#053931";
+    ctx.fill();
+
+    const pulse = reduceMotion ? 1 : 1 + Math.sin(t * 2.4) * 0.06;
+    ctx.beginPath();
+    ctx.arc(size / 2, size / 2, (size / 2 - 5) * pulse, 0, Math.PI * 2);
+    ctx.strokeStyle = "#48a89a";
+    ctx.lineWidth = 3;
+    ctx.stroke();
+
+    ctx.fillStyle = "#cbefeb";
+    ctx.font = "bold 24px Arial, sans-serif";
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    ctx.fillText("NG", size / 2, size / 2 + 1);
+
+    const angle = reduceMotion ? 0.6 : t * 1.4;
+    const orbitR = size / 2 - 8;
+    const dotX = size / 2 + Math.cos(angle) * orbitR;
+    const dotY = size / 2 + Math.sin(angle) * orbitR;
+    ctx.beginPath();
+    ctx.arc(dotX, dotY, 3.4, 0, Math.PI * 2);
+    ctx.fillStyle = "#48a89a";
+    ctx.shadowColor = "#48a89a";
+    ctx.shadowBlur = 6;
+    ctx.fill();
+    ctx.shadowBlur = 0;
+
+    link.href = canvas.toDataURL("image/png");
+
+    if (!reduceMotion && !document.hidden) {
+      setTimeout(() => requestAnimationFrame(draw), 150); // ~6-7fps is plenty for a favicon
+    }
+  }
+
+  requestAnimationFrame(draw);
+  document.addEventListener("visibilitychange", () => {
+    if (!document.hidden && !reduceMotion) requestAnimationFrame(draw);
+  });
+})();
