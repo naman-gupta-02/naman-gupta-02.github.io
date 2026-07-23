@@ -1,11 +1,12 @@
 // ---------- Project Data (from github.com/naman-gupta-02, newest first) ----------
 const projects = [
   {
-    name: "Sequence-Alignment",
-    date: "Jul 2026",
+    name: "DNA Sequence Alignment: DP vs. Divide-and-Conquer",
+    date: "Apr 2026 – May 2026",
     pushedAt: "2026-07-20",
-    tags: ["Python", "ML"],
-    desc: "A dynamic-programming implementation of classic sequence alignment algorithms in Python, built to compare and score similarity between biological or text sequences.",
+    tags: ["Python"],
+    lang: "Python",
+    desc: "Implemented the Needleman-Wunsch algorithm end-to-end with a full O(m×n) dynamic programming table, configurable gap penalties, and a custom mismatch cost matrix. Optimized memory with Hirschberg's divide-and-conquer approach, cutting peak memory footprint by 60% (O(m×n) → O(m+n)) without sacrificing traceback correctness.",
     url: "https://github.com/naman-gupta-02/Sequence-Alignment",
     featured: false
   },
@@ -14,7 +15,8 @@ const projects = [
     date: "May 2026 – Jun 2026",
     pushedAt: "2026-07-13",
     tags: ["JavaScript", "Python", "ML"],
-    desc: "Full-stack AI job search platform: a Python scraper feeding a FastAPI backend for fast search/filtering by skills, salary, visa sponsorship, and work mode. Ships a multi-model Groq LLM pipeline that synthesizes job summaries and an AI resume analyzer that scores candidate fit and rewrites weak bullets.",
+    lang: "JavaScript",
+    desc: "Full-stack AI job search platform integrating a Python scraper with a FastAPI backend and React frontend, indexing over 5,000 live postings with sub-second search across skills and salary filters. Ships a multi-model Groq LLM pipeline behind an AI resume analyzer that scores candidate-job fit and gives resume quality feedback.",
     url: "https://github.com/naman-gupta-02/TechHire",
     featured: true
   },
@@ -23,7 +25,8 @@ const projects = [
     date: "Dec 2024 – Jun 2025",
     pushedAt: "2025-06-01",
     tags: ["HTML", "Python", "ML"],
-    desc: "Web-scraped large volumes of Reddit posts, then fine-tuned BERT and LLaMA models to classify sentiment and surface early indicators of mental wellbeing concerns, enabling automated screening at scale.",
+    lang: "HTML",
+    desc: "A mental health screening pipeline that web-scrapes over 50,000 Reddit posts and comments, then fine-tunes BERT and LLaMA models on labeled sentiment data — achieving 91% classification accuracy for real-time wellbeing screening across thousands of scraped community posts daily.",
     url: "https://github.com/naman-gupta-02/Mind-Map",
     featured: true
   },
@@ -32,6 +35,7 @@ const projects = [
     date: "Jan 2024",
     pushedAt: "2024-01-01",
     tags: ["Python", "ML"],
+    lang: "Python",
     desc: "Real-time alerts, customizable rules, and an intuitive web interface for efficient network security management and monitoring.",
     url: "https://github.com/naman-gupta-02/Intrusion-Detection-System",
     featured: true
@@ -41,6 +45,7 @@ const projects = [
     date: "Aug 2024",
     pushedAt: "2024-08-11",
     tags: ["Python"],
+    lang: "Python",
     desc: "A collection of data structures & algorithms problem solutions in Python, used for continuous interview prep and practice (see my LeetCode profile).",
     url: "https://github.com/naman-gupta-02/Problems",
     featured: false
@@ -50,16 +55,18 @@ const projects = [
     date: "Jul 2024",
     pushedAt: "2024-07-24",
     tags: ["Java"],
+    lang: "Java",
     desc: "Implementation of the Chord distributed hash table (DHT) protocol in Java, demonstrating peer-to-peer key lookup and node routing in a distributed system.",
     url: "https://github.com/naman-gupta-02/Chord-DHC",
     featured: false
   },
   {
     name: "Real-Time Sign Language Detection",
-    date: "Apr 2024 – May 2024",
+    date: "Feb 2026 – Mar 2026",
     pushedAt: "2024-06-07",
     tags: ["Python", "ML"],
-    desc: "Real-time computer vision pipeline using OpenCV to capture live hand-gesture video, with a fine-tuned TensorFlow/Keras model classifying and translating gestures into text at 98% accuracy.",
+    lang: "Python",
+    desc: "Real-time computer vision pipeline using OpenCV to process live hand-gesture video streams at 30 frames per second with minimal latency and jitter. Fine-tuned a TensorFlow/Keras CNN across 26 gesture classes, achieving 98% real-time translation accuracy for practical sign language communication.",
     url: "https://github.com/naman-gupta-02/Sign-Language-Detection",
     featured: true
   },
@@ -68,6 +75,7 @@ const projects = [
     date: "May 2024 – Jun 2024",
     pushedAt: "2024-06-07",
     tags: ["JavaScript"],
+    lang: "JavaScript",
     desc: "Comprehensive MERN-stack platform for buying, selling, and renting new and second-hand items, improving user interactions by 40% and transaction efficiency by 30%.",
     url: "https://github.com/naman-gupta-02/Easy-Rent",
     featured: true
@@ -77,6 +85,7 @@ const projects = [
     date: "Feb 2024",
     pushedAt: "2024-02-05",
     tags: ["Python", "ML"],
+    lang: "Python",
     desc: "A conversational chatbot built in Python, exploring natural language processing techniques to handle user queries and simple dialogue flows.",
     url: "https://github.com/naman-gupta-02/Chat-Bot",
     featured: false
@@ -86,6 +95,7 @@ const projects = [
     date: "Jan 2024",
     pushedAt: "2024-01-15",
     tags: ["Python"],
+    lang: "Python",
     desc: "Extracts text from images using OCR and Pytesseract, exposed through a simple command-line interface.",
     url: "https://github.com/naman-gupta-02/Image-Text-Detection",
     featured: false
@@ -95,6 +105,7 @@ const projects = [
     date: "Sep 2023",
     pushedAt: "2023-09-01",
     tags: ["HTML"],
+    lang: "HTML",
     desc: "An early e-commerce website prototype built with HTML/CSS/JS, laying the groundwork for later full-stack marketplace projects like Easy Rent.",
     url: "https://github.com/naman-gupta-02/E-Commerce-Website",
     featured: false
@@ -104,6 +115,7 @@ const projects = [
     date: "Aug 2023",
     pushedAt: "2023-08-30",
     tags: ["Java", "ML"],
+    lang: "Java",
     desc: "Uses machine learning with a Java GUI to identify unwanted (spam) versus legitimate (ham) text messages.",
     url: "https://github.com/naman-gupta-02/Spam-Ham-Message-Detection",
     featured: false
@@ -113,6 +125,7 @@ const projects = [
     date: "Aug 2023",
     pushedAt: "2023-08-30",
     tags: ["Java", "ML"],
+    lang: "Java",
     desc: "Employs machine learning and a Java interface to streamline email classification into spam and legitimate mail.",
     url: "https://github.com/naman-gupta-02/Spam-Ham-Mail-Detection",
     featured: false
@@ -122,6 +135,7 @@ const projects = [
     date: "Aug 2023",
     pushedAt: "2023-08-30",
     tags: ["Java", "ML"],
+    lang: "Java",
     desc: "Addresses phishing website threats using machine learning classification paired with a Java interface.",
     url: "https://github.com/naman-gupta-02/Malware-Detection",
     featured: false
@@ -131,6 +145,7 @@ const projects = [
     date: "Aug 2023",
     pushedAt: "2023-08-29",
     tags: ["Python", "ML"],
+    lang: "Python",
     desc: "Leverages machine learning classification models to detect fraudulent transactions and safeguard financial activity.",
     url: "https://github.com/naman-gupta-02/Credit-Card-Fraud-Detection",
     featured: false
@@ -140,6 +155,7 @@ const projects = [
     date: "Aug 2023",
     pushedAt: "2023-08-29",
     tags: ["C++"],
+    lang: "C++",
     desc: "Terminal-based resource management platform in C++ for organized library operations — cataloguing, checkouts, and returns.",
     url: "https://github.com/naman-gupta-02/Library-Management-System",
     featured: false
@@ -149,6 +165,7 @@ const projects = [
     date: "Nov 2023",
     pushedAt: "2023-08-29",
     tags: ["HTML"],
+    lang: "Python",
     desc: "Dynamic, user-friendly blogging platform built end-to-end with Flask and SQLAlchemy, including auth, post creation, and a responsive Bootstrap UI — driving a 20% increase in user engagement.",
     url: "https://github.com/naman-gupta-02/Blog-Post",
     featured: true
@@ -187,6 +204,35 @@ const TECH_COLORS = {
 function techColor(tag) {
   return TECH_COLORS[tag] || "#48A89A";
 }
+
+// ---------- Language distribution bar (aggregated from each repo's GitHub-reported language) ----------
+function renderLanguageBar() {
+  const bar = document.getElementById("langBar");
+  const legend = document.getElementById("langLegend");
+  if (!bar || !legend) return;
+
+  const counts = {};
+  projects.forEach((p) => {
+    counts[p.lang] = (counts[p.lang] || 0) + 1;
+  });
+  const total = projects.length;
+  const entries = Object.entries(counts).sort((a, b) => b[1] - a[1]);
+
+  bar.innerHTML = entries
+    .map(([lang, count]) => {
+      const pct = (count / total) * 100;
+      return `<span style="flex:${pct} 0 0%; background:${techColor(lang)}" title="${lang}: ${count} repo${count > 1 ? "s" : ""}"></span>`;
+    })
+    .join("");
+
+  legend.innerHTML = entries
+    .map(([lang, count]) => {
+      const pct = Math.round((count / total) * 100);
+      return `<span class="legend-item"><i class="tech-dot" style="background:${techColor(lang)};color:${techColor(lang)}"></i>${lang} · ${pct}%</span>`;
+    })
+    .join("");
+}
+renderLanguageBar();
 
 function getFilteredSortedProjects() {
   const q = viewState.search.trim().toLowerCase();
@@ -582,3 +628,159 @@ document.querySelectorAll(".btn").forEach((btn) => {
     if (!document.hidden && !reduceMotion) requestAnimationFrame(draw);
   });
 })();
+
+// ---------- Résumé preview modal ----------
+const resumeModalOverlay = document.getElementById("resumeModalOverlay");
+const viewResumeBtn = document.getElementById("viewResumeBtn");
+const closeResumeModal = document.getElementById("closeResumeModal");
+
+function openResumeModal() {
+  resumeModalOverlay.hidden = false;
+  document.body.style.overflow = "hidden";
+}
+function closeResumeModalFn() {
+  resumeModalOverlay.hidden = true;
+  document.body.style.overflow = "";
+}
+if (viewResumeBtn) viewResumeBtn.addEventListener("click", openResumeModal);
+if (closeResumeModal) closeResumeModal.addEventListener("click", closeResumeModalFn);
+if (resumeModalOverlay) {
+  resumeModalOverlay.addEventListener("click", (e) => {
+    if (e.target === resumeModalOverlay) closeResumeModalFn();
+  });
+}
+
+// ---------- Command palette ("/" to open) ----------
+const cmdkOverlay = document.getElementById("cmdkOverlay");
+const cmdkInput = document.getElementById("cmdkInput");
+const cmdkResults = document.getElementById("cmdkResults");
+const cmdkTrigger = document.getElementById("cmdkTrigger");
+
+const sectionCommands = [
+  { icon: "🏠", label: "Home", hint: "section", action: () => scrollToId("home") },
+  { icon: "👤", label: "About", hint: "section", action: () => scrollToId("about") },
+  { icon: "💼", label: "Experience", hint: "section", action: () => scrollToId("experience") },
+  { icon: "📁", label: "Projects", hint: "section", action: () => scrollToId("projects") },
+  { icon: "🛠️", label: "Skills", hint: "section", action: () => scrollToId("skills") },
+  { icon: "🏆", label: "Achievements", hint: "section", action: () => scrollToId("achievements") },
+  { icon: "✉️", label: "Contact", hint: "section", action: () => scrollToId("contact") }
+];
+const actionCommands = [
+  { icon: "🌗", label: "Toggle theme", hint: "action", action: () => themeToggle.click() },
+  { icon: "📄", label: "View résumé", hint: "action", action: () => openResumeModal() },
+  { icon: "⬇️", label: "Download résumé", hint: "action", action: () => window.location.assign("assets/Naman_Gupta_Resume.pdf") },
+  { icon: "🐙", label: "Open GitHub", hint: "external", action: () => window.open("https://github.com/naman-gupta-02", "_blank", "noopener") },
+  { icon: "💼", label: "Open LinkedIn", hint: "external", action: () => window.open("https://linkedin.com/in/-namangupta", "_blank", "noopener") },
+  { icon: "🧩", label: "Open LeetCode", hint: "external", action: () => window.open("https://leetcode.com/namanguptaprogrammer", "_blank", "noopener") }
+];
+const projectCommands = projects.map((p) => ({
+  icon: "📦",
+  label: p.name,
+  hint: "project",
+  action: () => {
+    scrollToId("projects");
+    if (searchInput) {
+      const setter = Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, "value").set;
+      setter.call(searchInput, p.name);
+      searchInput.dispatchEvent(new Event("input", { bubbles: true }));
+    }
+  }
+}));
+const allCommands = [...sectionCommands, ...actionCommands, ...projectCommands];
+
+function scrollToId(id) {
+  const el = document.getElementById(id);
+  if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
+let cmdkSelected = 0;
+let cmdkFiltered = allCommands;
+
+function renderCmdkResults() {
+  if (cmdkFiltered.length === 0) {
+    cmdkResults.innerHTML = `<div class="cmdk-empty">No matches. Try "projects" or "theme".</div>`;
+    return;
+  }
+  cmdkResults.innerHTML = cmdkFiltered
+    .map(
+      (cmd, i) => `
+      <div class="cmdk-item${i === cmdkSelected ? " selected" : ""}" data-index="${i}">
+        <span class="cmdk-icon">${cmd.icon}</span>
+        <span class="cmdk-label">${cmd.label}</span>
+        <span class="cmdk-hint">${cmd.hint}</span>
+      </div>`
+    )
+    .join("");
+}
+
+function filterCmdk(query) {
+  const q = query.trim().toLowerCase();
+  cmdkFiltered = !q ? allCommands : allCommands.filter((c) => c.label.toLowerCase().includes(q));
+  cmdkSelected = 0;
+  renderCmdkResults();
+}
+
+function openCmdk() {
+  cmdkOverlay.hidden = false;
+  document.body.style.overflow = "hidden";
+  cmdkInput.value = "";
+  filterCmdk("");
+  setTimeout(() => cmdkInput.focus(), 0);
+}
+function closeCmdk() {
+  cmdkOverlay.hidden = true;
+  document.body.style.overflow = "";
+}
+function runSelected() {
+  const cmd = cmdkFiltered[cmdkSelected];
+  if (!cmd) return;
+  closeCmdk();
+  cmd.action();
+}
+
+if (cmdkTrigger) cmdkTrigger.addEventListener("click", openCmdk);
+if (cmdkOverlay) {
+  cmdkOverlay.addEventListener("click", (e) => {
+    if (e.target === cmdkOverlay) closeCmdk();
+  });
+}
+if (cmdkInput) {
+  cmdkInput.addEventListener("input", () => filterCmdk(cmdkInput.value));
+  cmdkInput.addEventListener("keydown", (e) => {
+    if (e.key === "ArrowDown") {
+      e.preventDefault();
+      cmdkSelected = Math.min(cmdkSelected + 1, cmdkFiltered.length - 1);
+      renderCmdkResults();
+    } else if (e.key === "ArrowUp") {
+      e.preventDefault();
+      cmdkSelected = Math.max(cmdkSelected - 1, 0);
+      renderCmdkResults();
+    } else if (e.key === "Enter") {
+      e.preventDefault();
+      runSelected();
+    }
+  });
+}
+if (cmdkResults) {
+  cmdkResults.addEventListener("click", (e) => {
+    const item = e.target.closest(".cmdk-item");
+    if (!item) return;
+    cmdkSelected = Number(item.dataset.index);
+    runSelected();
+  });
+}
+
+document.addEventListener("keydown", (e) => {
+  const activeTag = document.activeElement && document.activeElement.tagName;
+  const isTyping = activeTag === "INPUT" || activeTag === "TEXTAREA" || activeTag === "SELECT";
+
+  if (e.key === "/" && !isTyping && cmdkOverlay.hidden) {
+    e.preventDefault();
+    openCmdk();
+    return;
+  }
+  if (e.key === "Escape") {
+    if (!cmdkOverlay.hidden) closeCmdk();
+    if (!resumeModalOverlay.hidden) closeResumeModalFn();
+  }
+});
