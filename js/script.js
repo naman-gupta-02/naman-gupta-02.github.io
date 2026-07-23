@@ -265,7 +265,7 @@ function renderProjects() {
 
   grid.innerHTML = list.map((p, i) => `
     <div class="project-card card-enter${p.featured ? " featured" : ""}" data-tags="${p.tags.join(",")}" data-repo="${repoSlug(p.url)}" style="transition-delay:${Math.min(i, 8) * 60}ms">
-      ${p.featured ? '<span class="badge-featured">Featured</span>' : ""}
+      ${p.featured ? '<span class="badge-featured">Highlight</span>' : ""}
       <div class="card-spotlight"></div>
       <div class="project-top">
         <span class="folder-icon">📁</span>

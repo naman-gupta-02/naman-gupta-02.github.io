@@ -13,6 +13,7 @@
   --accent: #48a89a;
   --accent-dim: #48a89a33;
   --accent-2: #cbefeb;
+  --on-accent: #000000;
   --shadow: 0 10px 30px -10px rgba(0,0,0,0.6);
   --radius: 14px;
   --font: 'Inter', 'Segoe UI', system-ui, -apple-system, Roboto, Helvetica, Arial, sans-serif;
@@ -30,6 +31,7 @@
   --accent: #00524d;
   --accent-dim: #00524d22;
   --accent-2: #053931;
+  --on-accent: #cbefeb;
   --shadow: 0 10px 30px -12px rgba(5,57,49,0.18);
 }
 
@@ -118,7 +120,7 @@ img { max-width: 100%; display: block; }
   display: inline-block; padding: 12px 26px; border-radius: 8px; font-size: 0.95rem;
   font-weight: 600; border: 2px solid transparent; cursor: pointer; transition: all 0.25s ease;
 }
-.btn-primary { background: var(--accent); color: #000000; }
+.btn-primary { background: var(--accent); color: var(--on-accent); }
 .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 12px 24px -8px var(--accent-dim); }
 .btn-ghost { border-color: var(--accent); color: var(--accent); }
 .btn-ghost:hover { background: var(--accent-dim); transform: translateY(-3px); }
@@ -344,7 +346,7 @@ img { max-width: 100%; display: block; }
   display: inline-flex; align-items: center; gap: 7px;
 }
 .filter-btn:hover { color: var(--text); border-color: var(--accent); }
-.filter-btn.active { background: var(--accent); color: #000000; border-color: var(--accent); font-weight: 600; }
+.filter-btn.active { background: var(--accent); color: var(--on-accent); border-color: var(--accent); font-weight: 600; }
 
 /* Brand-color dots for tech tags (filter buttons, project tags, skill chips) */
 .tech-dot, .chip-dot {
@@ -412,7 +414,7 @@ img { max-width: 100%; display: block; }
 .no-results strong { color: var(--text); }
 
 .badge-featured {
-  position: absolute; top: -10px; right: 18px; background: var(--accent); color: #000000;
+  position: absolute; top: -10px; right: 18px; background: var(--accent); color: var(--on-accent);
   font-size: 0.65rem; font-weight: 700; padding: 3px 10px; border-radius: 20px; text-transform: uppercase;
   z-index: 1;
 }
@@ -455,7 +457,7 @@ img { max-width: 100%; display: block; }
 /* ---------- Back to top ---------- */
 .back-to-top {
   position: fixed; bottom: 26px; right: 26px; width: 46px; height: 46px; border-radius: 50%;
-  background: var(--accent); color: #000000; border: none; font-size: 1.2rem; cursor: pointer;
+  background: var(--accent); color: var(--on-accent); border: none; font-size: 1.2rem; cursor: pointer;
   box-shadow: var(--shadow); opacity: 0; pointer-events: none; transition: opacity 0.3s ease, transform 0.2s ease;
   z-index: 800;
 }
