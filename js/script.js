@@ -1,6 +1,16 @@
 // ---------- Project Data (from github.com/naman-gupta-02, newest first) ----------
 const projects = [
   {
+    name: "AI-Powered Personal Research Assistant",
+    date: "June 2026 – July 2026",
+    pushedAt: "2026-07-23",
+    tags: ["Python", "JavaScript", "ML"],
+    lang: "Python",
+    desc: "Architected a full-stack RAG research platform pairing a FastAPI/Postgres (pgvector) backend with a Next.js frontend, powering summarization, semantic chat, and comparison across 10+ integrated modules. Benchmarked the ingestion pipeline end-to-end against real Gemini and Voyage calls, achieving under 4.3 seconds total processing per paper.",
+    url: "https://github.com/naman-gupta-02/AI-Powered-Personal-Research-Assistant",
+    featured: true
+  },
+  {
     name: "DNA Sequence Alignment: DP vs. Divide-and-Conquer",
     date: "Apr 2026 – May 2026",
     pushedAt: "2026-07-20",
