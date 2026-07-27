@@ -398,7 +398,7 @@ img { max-width: 100%; display: block; }
   display: flex; gap: 16px; align-items: center; margin-top: 14px; padding-top: 14px;
   border-top: 1px solid var(--border); font-family: var(--mono); font-size: 0.76rem; color: var(--text-muted);
 }
-.stat-stars, .stat-updated { display: inline-flex; align-items: center; gap: 5px; }
+.stat-stars { display: inline-flex; align-items: center; gap: 5px; }
 .stat-stars svg { width: 13px; height: 13px; color: var(--accent); }
 .stat-skel {
   display: inline-block; width: 42px; height: 10px; border-radius: 4px;

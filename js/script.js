@@ -299,7 +299,6 @@ function renderProjects() {
       <div class="tech-row">${p.tags.map((t) => `<span><i class="tech-dot" style="background:${techColor(t)};color:${techColor(t)}"></i>${t}</span>`).join("")}</div>
       <div class="stat-row loading" data-stat-for="${repoSlug(p.url)}">
         <span class="stat-stars"><span class="stat-icon">${starIconSVG()}</span><span class="stat-skel"></span></span>
-        <span class="stat-updated"><span class="stat-skel"></span></span>
       </div>
     </div>
   `).join("");
@@ -399,22 +398,11 @@ function saveStatsCache(cache) {
     /* storage unavailable — skip caching silently */
   }
 }
-function timeAgo(iso) {
-  const diffMs = Date.now() - new Date(iso).getTime();
-  const days = Math.floor(diffMs / 86400000);
-  if (days < 1) return "today";
-  if (days < 30) return `${days}d ago`;
-  const months = Math.floor(days / 30);
-  if (months < 12) return `${months}mo ago`;
-  return `${Math.floor(months / 12)}y ago`;
-}
-
-function paintStats(slug, stars, updatedAt) {
+function paintStats(slug, stars) {
   const row = document.querySelector(`.stat-row[data-stat-for="${slug}"]`);
   if (!row) return;
   row.classList.remove("loading");
   row.querySelector(".stat-stars").innerHTML = `${starIconSVG()}<span>${stars}</span>`;
-  row.querySelector(".stat-updated").textContent = `Updated ${timeAgo(updatedAt)}`;
 }
 
 async function hydrateStats() {
@@ -426,16 +414,16 @@ async function hydrateStats() {
     const slug = row.dataset.statFor;
     const cached = cache[slug];
     if (cached && now - cached.fetchedAt < STATS_TTL) {
-      paintStats(slug, cached.stars, cached.updatedAt);
+      paintStats(slug, cached.stars);
       continue;
     }
     fetch(`https://api.github.com/repos/naman-gupta-02/${slug}`)
       .then((res) => (res.ok ? res.json() : null))
       .then((data) => {
-        if (!data) return; // rate-limited or offline — leave the static date, skip silently
-        cache[slug] = { stars: data.stargazers_count, updatedAt: data.pushed_at, fetchedAt: Date.now() };
+        if (!data) return; // rate-limited or offline — skip silently
+        cache[slug] = { stars: data.stargazers_count, fetchedAt: Date.now() };
         saveStatsCache(cache);
-        paintStats(slug, data.stargazers_count, data.pushed_at);
+        paintStats(slug, data.stargazers_count);
       })
       .catch(() => {});
   }
