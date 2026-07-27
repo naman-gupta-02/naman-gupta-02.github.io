@@ -1,6 +1,16 @@
 // ---------- Project Data (from github.com/naman-gupta-02, newest first) ----------
 const projects = [
   {
+    name: "Smart Cards",
+    date: "Jul 2026",
+    pushedAt: "2026-07-24",
+    tags: ["Python", "ML"],
+    lang: "Python",
+    desc: "An AI-powered study tool that turns raw lecture notes into an adaptive spaced-repetition flashcard deck. An LLM grades short-answer responses against a rubric instead of binary flip-cards, driving a modified SM-2 scheduler off the continuous grading score and per-card difficulty, with a Streamlit UI for concept-mastery and review-streak dashboards.",
+    url: "https://github.com/naman-gupta-02/smart-cards",
+    featured: true
+  },
+  {
     name: "AI-Powered Personal Research Assistant",
     date: "June 2026 – July 2026",
     pushedAt: "2026-07-23",
