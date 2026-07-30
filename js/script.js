@@ -6,7 +6,7 @@ const projects = [
     pushedAt: "2026-07-30",
     tags: ["TypeScript", "ML"],
     lang: "TypeScript",
-    desc: "A production-grade RAG document Q&A platform: upload PDFs/DOCX/TXT/Markdown and chat with them over hybrid retrieval (vector + BM25 + RRF) with streamed, cited answers. Built as an npm-workspaces monorepo — Express + Socket.IO API, a BullMQ worker for async parse/chunk/embed/index, JWT auth with shareable read-only links, and Gemini for embeddings and chat.",
+    desc: "A production-grade RAG document Q&A platform: upload PDFs/DOCX/TXT/Markdown and chat with them over hybrid retrieval (vector + BM25 + RRF) with streamed, cited answers, behind an Express/Socket.IO API, a BullMQ ingestion worker, and JWT auth with shareable links. Benchmarked end-to-end against a live stack: hybrid search resolves in 15ms (p50) at 50 chunks and scales to 243ms at 1,000, while the API sustains 6,000+ req/sec on health checks under load.",
     url: "https://github.com/naman-gupta-02/DocMind",
     featured: true
   },
