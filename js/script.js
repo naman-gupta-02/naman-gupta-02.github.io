@@ -1,6 +1,16 @@
 // ---------- Project Data (from github.com/naman-gupta-02, newest first) ----------
 const projects = [
   {
+    name: "DocMind",
+    date: "Jul 2026",
+    pushedAt: "2026-07-30",
+    tags: ["TypeScript", "ML"],
+    lang: "TypeScript",
+    desc: "A production-grade RAG document Q&A platform: upload PDFs/DOCX/TXT/Markdown and chat with them over hybrid retrieval (vector + BM25 + RRF) with streamed, cited answers. Built as an npm-workspaces monorepo — Express + Socket.IO API, a BullMQ worker for async parse/chunk/embed/index, JWT auth with shareable read-only links, and Gemini for embeddings and chat.",
+    url: "https://github.com/naman-gupta-02/DocMind",
+    featured: true
+  },
+  {
     name: "Smart Cards",
     date: "Jul 2026",
     pushedAt: "2026-07-24",
@@ -216,6 +226,7 @@ function repoSlug(url) {
 const TECH_COLORS = {
   Python: "#3776AB",
   JavaScript: "#F7DF1E",
+  TypeScript: "#3178C6",
   Java: "#ED8B00",
   "C++": "#00599C",
   HTML: "#E34F26",
