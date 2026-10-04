@@ -156,6 +156,14 @@
               <li>💼 Ex-Morgan Stanley, Mumbai</li>
             </ul>
           </div>
+          <div class="fact-card">
+            <h3>Recent GitHub Activity</h3>
+            <ul class="activity-feed" id="activityFeed">
+              <li class="activity-item loading"><span class="stat-skel"></span></li>
+              <li class="activity-item loading"><span class="stat-skel"></span></li>
+              <li class="activity-item loading"><span class="stat-skel"></span></li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
@@ -219,7 +227,7 @@
   <section id="projects" class="section">
     <div class="container">
       <h2 class="section-title reveal"><span class="num">03.</span> Projects</h2>
-      <p class="section-sub reveal">All <span id="projectCount">20</span> public repositories from my <a href="https://github.com/naman-gupta-02" target="_blank" rel="noopener">GitHub</a>, live star counts pulled straight from the API. Search, filter, and sort below.</p>
+      <p class="section-sub reveal">A curated set of <span id="projectCount">23</span> repositories from my <a href="https://github.com/naman-gupta-02" target="_blank" rel="noopener">GitHub</a>, live star counts pulled straight from the API. Search, filter, and sort below.</p>
 
       <div class="lang-bar-wrap reveal">
         <div class="lang-bar" id="langBar"><!-- injected by js/script.js --></div>
@@ -408,6 +416,25 @@
     <div class="modal-footer">
       <a href="assets/Naman_Gupta_Resume.pdf" target="_blank" rel="noopener" class="btn btn-ghost">Open in New Tab</a>
       <a href="assets/Naman_Gupta_Resume.pdf" download class="btn btn-primary">Download PDF</a>
+    </div>
+  </div>
+</div>
+
+<!-- PROJECT DETAIL MODAL -->
+<div class="modal-overlay" id="projectModalOverlay" hidden>
+  <div class="modal-box project-modal-box" role="dialog" aria-modal="true" aria-label="Project details">
+    <div class="modal-header">
+      <h3 id="projectModalTitle">Project</h3>
+      <button type="button" class="modal-close" id="closeProjectModal" aria-label="Close">&times;</button>
+    </div>
+    <div class="project-modal-body">
+      <span class="project-date" id="projectModalDate"></span>
+      <div class="tech-row" id="projectModalTags"></div>
+      <p id="projectModalDesc"></p>
+      <div class="project-modal-stats" id="projectModalStats"></div>
+    </div>
+    <div class="modal-footer">
+      <a href="#" target="_blank" rel="noopener" class="btn btn-primary" id="projectModalLink">View on GitHub</a>
     </div>
   </div>
 </div>

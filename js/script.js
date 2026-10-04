@@ -1,6 +1,36 @@
 // ---------- Project Data (from github.com/naman-gupta-02, newest first) ----------
 const projects = [
   {
+    name: "AltContext",
+    date: "Sep 2026",
+    pushedAt: "2026-09-28",
+    tags: ["Python", "ML"],
+    lang: "Python",
+    desc: "Context-aware alt text from a compact vision-language model (SmolVLM-256M) fine-tuned with LoRA on Wikipedia image/caption/context data, served locally via FastAPI behind a Chrome extension. Benchmarked against the base model on a held-out 500-example set: context-aware fine-tuning lifts CIDEr-D from 0.117 to 0.449 while answering 2.7× faster (0.71s vs 1.90s median) thanks to more concise, grounded outputs.",
+    url: "https://github.com/naman-gupta-02/AltContext",
+    featured: true
+  },
+  {
+    name: "IncidentDNA",
+    date: "Sep 2026",
+    pushedAt: "2026-09-26",
+    tags: ["Python", "ML"],
+    lang: "Python",
+    desc: "An AI production-incident investigator that detects anomalies across distributed services and ranks the true root cause instead of just the loudest symptom. Measured on 36 injected incidents: load-adjusted detection cuts false alerts 12× (1.11/hr → 0.09/hr) at 0.958 F1, and causal/onset-aware ranking hits 100% top-1 root-cause accuracy (vs. 44% for naive anomaly-strength ranking) — all in 12ms end-to-end per window.",
+    url: "https://github.com/naman-gupta-02/IncidentDNA",
+    featured: true
+  },
+  {
+    name: "Mesh",
+    date: "Jul 2026 – Aug 2026",
+    pushedAt: "2026-08-07",
+    tags: ["Python", "ML"],
+    lang: "Python",
+    desc: "Distributed LLM inference across heterogeneous volunteer devices (dorm-room laptops, not a datacenter), splitting a model into a layer-parallel pipeline where each node holds a contiguous range of transformer blocks sized to its measured throughput. Built-in fault healing recovers from a dead node mid-request, dynamic rebalancing re-partitions layers after topology changes, and a live dashboard handles onboarding new devices.",
+    url: "https://github.com/naman-gupta-02/Mesh",
+    featured: true
+  },
+  {
     name: "DocMind",
     date: "Jul 2026",
     pushedAt: "2026-07-30",
@@ -416,29 +446,184 @@ function paintStats(slug, stars) {
   row.querySelector(".stat-stars").innerHTML = `${starIconSVG()}<span>${stars}</span>`;
 }
 
-async function hydrateStats() {
+// Returns { stars, forks, issues } for a repo, from cache if fresh or via a fresh fetch.
+async function getRepoStats(slug) {
   const cache = loadStatsCache();
-  const now = Date.now();
+  const cached = cache[slug];
+  if (cached && Date.now() - cached.fetchedAt < STATS_TTL) return cached;
+  const res = await fetch(`https://api.github.com/repos/naman-gupta-02/${slug}`);
+  if (!res.ok) return cached || null;
+  const data = await res.json();
+  const entry = { stars: data.stargazers_count, forks: data.forks_count, issues: data.open_issues_count, fetchedAt: Date.now() };
+  cache[slug] = entry;
+  saveStatsCache(cache);
+  return entry;
+}
+
+async function hydrateStats() {
   const rows = document.querySelectorAll(".stat-row[data-stat-for]");
 
   for (const row of rows) {
     const slug = row.dataset.statFor;
-    const cached = cache[slug];
-    if (cached && now - cached.fetchedAt < STATS_TTL) {
-      paintStats(slug, cached.stars);
-      continue;
-    }
-    fetch(`https://api.github.com/repos/naman-gupta-02/${slug}`)
-      .then((res) => (res.ok ? res.json() : null))
-      .then((data) => {
-        if (!data) return; // rate-limited or offline — skip silently
-        cache[slug] = { stars: data.stargazers_count, fetchedAt: Date.now() };
-        saveStatsCache(cache);
-        paintStats(slug, data.stargazers_count);
+    getRepoStats(slug)
+      .then((entry) => {
+        if (!entry) return; // rate-limited or offline — skip silently
+        paintStats(slug, entry.stars);
       })
       .catch(() => {});
   }
 }
+
+// ---------- Recent GitHub activity feed ----------
+const ACTIVITY_CACHE_KEY = "gh_activity_cache_v1";
+const ACTIVITY_TTL = 30 * 60 * 1000; // 30 minutes
+
+const ACTIVITY_ICONS = {
+  PushEvent: "📤",
+  CreateEvent: "✨",
+  PublicEvent: "🌍",
+  WatchEvent: "⭐",
+  ForkEvent: "🍴",
+  IssuesEvent: "🐛",
+  PullRequestEvent: "🔀"
+};
+
+function relativeTime(iso) {
+  const diffMs = Date.now() - new Date(iso).getTime();
+  const mins = Math.floor(diffMs / 60000);
+  if (mins < 60) return `${Math.max(mins, 1)}m ago`;
+  const hours = Math.floor(mins / 60);
+  if (hours < 24) return `${hours}h ago`;
+  const days = Math.floor(hours / 24);
+  if (days < 30) return `${days}d ago`;
+  const months = Math.floor(days / 30);
+  if (months < 12) return `${months}mo ago`;
+  return `${Math.floor(months / 12)}y ago`;
+}
+
+function describeEvent(e) {
+  const repo = e.repo.name.split("/").pop();
+  switch (e.type) {
+    case "PushEvent": {
+      const n = e.payload.commits ? e.payload.commits.length : 1;
+      return `Pushed ${n} commit${n > 1 ? "s" : ""} to <strong>${repo}</strong>`;
+    }
+    case "CreateEvent":
+      if (e.payload.ref_type === "repository") return `Created repository <strong>${repo}</strong>`;
+      return `Created ${e.payload.ref_type} <strong>${e.payload.ref || ""}</strong> on <strong>${repo}</strong>`;
+    case "WatchEvent":
+      return `Starred <strong>${repo}</strong>`;
+    case "ForkEvent":
+      return `Forked <strong>${repo}</strong>`;
+    case "IssuesEvent":
+      return `${e.payload.action} an issue on <strong>${repo}</strong>`;
+    case "PullRequestEvent":
+      return `${e.payload.action} a pull request on <strong>${repo}</strong>`;
+    default:
+      return `Activity on <strong>${repo}</strong>`;
+  }
+}
+
+async function loadActivityFeed() {
+  const feedEl = document.getElementById("activityFeed");
+  if (!feedEl) return;
+
+  let cached = null;
+  try {
+    cached = JSON.parse(localStorage.getItem(ACTIVITY_CACHE_KEY));
+  } catch {
+    /* ignore */
+  }
+
+  if (cached && Date.now() - cached.fetchedAt < ACTIVITY_TTL) {
+    renderActivityFeed(cached.events);
+    return;
+  }
+
+  try {
+    const res = await fetch("https://api.github.com/users/naman-gupta-02/events/public?per_page=10");
+    if (!res.ok) throw new Error("rate-limited");
+    const events = (await res.json())
+      .filter((e) => ACTIVITY_ICONS[e.type])
+      .slice(0, 5)
+      .map((e) => ({ type: e.type, repo: e.repo, payload: e.payload, created_at: e.created_at }));
+    localStorage.setItem(ACTIVITY_CACHE_KEY, JSON.stringify({ events, fetchedAt: Date.now() }));
+    renderActivityFeed(events);
+  } catch {
+    feedEl.innerHTML = `<li class="activity-empty">Couldn't load activity right now.</li>`;
+  }
+}
+
+function renderActivityFeed(events) {
+  const feedEl = document.getElementById("activityFeed");
+  if (!feedEl) return;
+  if (!events || events.length === 0) {
+    feedEl.innerHTML = `<li class="activity-empty">No recent public activity.</li>`;
+    return;
+  }
+  feedEl.innerHTML = events
+    .map(
+      (e) => `
+      <li class="activity-item">
+        <span class="activity-icon">${ACTIVITY_ICONS[e.type] || "•"}</span>
+        <span class="activity-text">${describeEvent(e)}</span>
+        <span class="activity-time">${relativeTime(e.created_at)}</span>
+      </li>`
+    )
+    .join("");
+}
+loadActivityFeed();
+
+// ---------- Project detail modal ----------
+const projectModalOverlay = document.getElementById("projectModalOverlay");
+const closeProjectModal = document.getElementById("closeProjectModal");
+
+function openProjectModal(project) {
+  const slug = repoSlug(project.url);
+  document.getElementById("projectModalTitle").textContent = project.name;
+  document.getElementById("projectModalDate").textContent = project.date;
+  document.getElementById("projectModalTags").innerHTML = project.tags
+    .map((t) => `<span><i class="tech-dot" style="background:${techColor(t)};color:${techColor(t)}"></i>${t}</span>`)
+    .join("");
+  document.getElementById("projectModalDesc").textContent = project.desc;
+  document.getElementById("projectModalLink").href = project.url;
+
+  const statsEl = document.getElementById("projectModalStats");
+  statsEl.innerHTML = `
+    <div class="stat-block"><span class="stat-value">–</span><span class="stat-label">Stars</span></div>
+    <div class="stat-block"><span class="stat-value">–</span><span class="stat-label">Forks</span></div>
+    <div class="stat-block"><span class="stat-value">–</span><span class="stat-label">Open Issues</span></div>
+  `;
+  getRepoStats(slug).then((entry) => {
+    if (!entry) return;
+    statsEl.innerHTML = `
+      <div class="stat-block"><span class="stat-value">${entry.stars}</span><span class="stat-label">Stars</span></div>
+      <div class="stat-block"><span class="stat-value">${entry.forks}</span><span class="stat-label">Forks</span></div>
+      <div class="stat-block"><span class="stat-value">${entry.issues}</span><span class="stat-label">Open Issues</span></div>
+    `;
+  });
+
+  projectModalOverlay.hidden = false;
+  document.body.style.overflow = "hidden";
+}
+function closeProjectModalFn() {
+  projectModalOverlay.hidden = true;
+  document.body.style.overflow = "";
+}
+if (closeProjectModal) closeProjectModal.addEventListener("click", closeProjectModalFn);
+if (projectModalOverlay) {
+  projectModalOverlay.addEventListener("click", (e) => {
+    if (e.target === projectModalOverlay) closeProjectModalFn();
+  });
+}
+grid.addEventListener("click", (e) => {
+  if (e.target.closest(".project-links")) return; // let the GitHub icon link through
+  const card = e.target.closest(".project-card");
+  if (!card) return;
+  const slug = card.dataset.repo;
+  const project = projects.find((p) => repoSlug(p.url) === slug);
+  if (project) openProjectModal(project);
+});
 
 // ---------- Animated project counter ----------
 if (countEl) {
@@ -801,5 +986,6 @@ document.addEventListener("keydown", (e) => {
   if (e.key === "Escape") {
     if (!cmdkOverlay.hidden) closeCmdk();
     if (!resumeModalOverlay.hidden) closeResumeModalFn();
+    if (!projectModalOverlay.hidden) closeProjectModalFn();
   }
 });
